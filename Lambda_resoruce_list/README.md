@@ -1,14 +1,16 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
+### AWS 리소스 리스트 엑셀 출력
 
+---
++ ### 필요 라이브러리
+  - pandas (데이터 프레임, 엑셀 조작)
+  - concurrent.futures (병렬 작업 처리)
+    
++ ### 전제 조건
+  - 출력이 필요한 계정의 Access Key, Secret Key 필요
 
-Hi there! Welcome to AWS Cloud9!
-
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
-
-Happy coding!
++ ### 사용 이유
+  - 리소스 출력을 통한 현황 확인
+    
++ ### 출력 결과물
+![img.png](img.png)
+![img_1.png](img_1.png)
