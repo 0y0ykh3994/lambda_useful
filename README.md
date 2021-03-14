@@ -9,3 +9,4 @@
 + ### 사용 이유
   - 국가별 Edge Location에서 제공 되는 Header를 활용하여 국가 언어셋에 맞는 컨텐츠를 제공하기 위함
     
+![img.png](img.png)
