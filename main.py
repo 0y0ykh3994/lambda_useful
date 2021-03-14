@@ -11,12 +11,8 @@ def lambda_handler(event, context):
      viewerCountry       = headers.get('cloudfront-viewer-country')
      viewerMobile        = headers.get('cloudfront-is-mobile-viewer')
      viewerCallHost      = headers.get('host')[0]['value']
-     deviceCookie        = 'NORMAL' # 기본은 PC로 이부분은 향후 논의 필요해 보임
      langDirectory       = ''
      queryString         = ''
-
-
-    #print('request is {}'.format(request))
 
      #쿠키 확인
      for cookie in headers.get('cookie', []):
@@ -34,7 +30,6 @@ def lambda_handler(event, context):
       #print('pass origin')
       return request
 
-     #print('country value is {}'.format(viewerCountry))
 
      #리다이렉트 주소 변경
      if not hasCountryDirectory and viewerCountry: #국가 코드가 주소에는 없고 cloudfront-viewer-country는 헤더에 존재 할 경우
@@ -65,7 +60,6 @@ def lambda_handler(event, context):
      if request['querystring']: # query string 값이 있으면 추가
         queryString = '?'+request['querystring']
 
-
      response = {
          'status': '302',
          'statusDescription': 'Found',
@@ -80,9 +74,6 @@ def lambda_handler(event, context):
      #쿠키 생성
      if not hasDeviceCookie:
         expires = datetime.datetime.utcnow() + datetime.timedelta(days=30) # expires in 30 days
-        response['headers']['set-cookie'] = [{ 'key': "Set-Cookie", 'value': 'org.springframework.mobile.device.site.CookieSitePreferenceRepository.SITE_PREFERENCE='+deviceCookie +'; Path=/; Domain=mwave.me; Expires='+expires.strftime("%a, %d %b %Y %H:%M:%S GMT")}];
-
-
-     #print("response is {}".format(response))
+        response['headers']['set-cookie'] = [{ 'key': "Set-Cookie", 'value': 'org.springframework.mobile.device.site.CookieSitePreferenceRepository.SITE_PREFERENCE='+deviceCookie +'; Path=/; Domain=example.com; Expires='+expires.strftime("%a, %d %b %Y %H:%M:%S GMT")}];
 
      return response
